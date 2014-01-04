@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.proteanplatform.protea.example;
+package com.proteanplatform.protean.example;
 
 import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.proteanplatform.protea.ProTeaServer;
+import com.proteanplatform.protean.ProTeaServer;
 
 /**
  * @author Austin Miller

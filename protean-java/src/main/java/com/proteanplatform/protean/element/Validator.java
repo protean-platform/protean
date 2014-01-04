@@ -13,33 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.proteanplatform.protea.element;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+package com.proteanplatform.protean.element;
 
 /**
- * This is the autocomplete bar on the menu, which attempts to map strings to loadable
- * "programs"
- * 
  * @author Austin Miller
+ *
  */
-public abstract class GoBar<T> extends AbstractElement<T> {
-
-	public String getCommand() {
-		return "GoBar";
-	}
+public class Validator {
+	private String regex;
+	private String error;
 	
-	private List<String> commands = new ArrayList<String>();
-
-	public List<String> getCommands() {
-		return commands;
+	public String getRegex() {
+		return regex;
+	}
+	public void setRegex(String regex) {
+		this.regex = regex;
+	}
+	public String getError() {
+		return error;
+	}
+	public void setError(String error) {
+		this.error = error;
 	}
 
-	public void setCommands(List<String> commands) {
-		this.commands = commands;
-	}
-	
-	public abstract void go(Map<String,Object> args);
 }

@@ -13,14 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.proteanplatform.protea.example;
+package com.proteanplatform.protean.example;
 
-import com.proteanplatform.protea.ProTeaUser;
+import com.proteanplatform.protean.element.Window;
 
 /**
  * @author Austin Miller
  *
  */
-public class ExampleUser extends ProTeaUser {
-
+public class ExampleTableWindow extends Window<ExampleUser> {
+	
+	public ExampleTableWindow() {
+		setTitle("Table Window");
+	}
+	
+	public void close() {
+		user.destroy(this);
+	}
+	
+	public ExampleTable getBody() {
+		ExampleTable table = new ExampleTable();
+		user.register(table);
+		return table;
+	}
+	
+	
 }

@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.proteanplatform.protea.example;
+package com.proteanplatform.protean.example;
 
 import java.util.Random;
 
-import com.proteanplatform.protea.element.Table;
-import com.proteanplatform.protea.element.TableColumn;
-import com.proteanplatform.protea.element.TableColumn.Sorting;
+import com.proteanplatform.protean.element.Table;
+import com.proteanplatform.protean.element.TableColumn;
+import com.proteanplatform.protean.element.TableColumn.Sorting;
 
 /**
  * @author Austin Miller

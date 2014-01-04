@@ -13,32 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.proteanplatform.protea.element;
+package com.proteanplatform.protean.element;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
+ * This is the autocomplete bar on the menu, which attempts to map strings to loadable
+ * "programs"
+ * 
  * @author Austin Miller
  */
-public abstract class Form<T> extends AbstractElement<T>{
+public abstract class GoBar<T> extends AbstractElement<T> {
 
-	/* (non-Javadoc)
-	 * @see org.codefrags.protea.element.AbstractElement#getCommand()
-	 */
-	@Override
 	public String getCommand() {
-		return "Form";
+		return "GoBar";
+	}
+	
+	private List<String> commands = new ArrayList<String>();
+
+	public List<String> getCommands() {
+		return commands;
 	}
 
-	public List<FormElement> getElements() {
-		return elements;
+	public void setCommands(List<String> commands) {
+		this.commands = commands;
 	}
-
-	public void setElements(List<FormElement> elements) {
-		this.elements = elements;
-	}
-
-	private List<FormElement> elements = new ArrayList<FormElement>();
-
+	
+	public abstract void go(Map<String,Object> args);
 }

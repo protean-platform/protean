@@ -13,29 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.proteanplatform.protea.example;
-
-import com.proteanplatform.protea.element.Window;
+package com.proteanplatform.protean.element;
 
 /**
  * @author Austin Miller
  *
  */
-public class ExampleTableWindow extends Window<ExampleUser> {
-	
-	public ExampleTableWindow() {
-		setTitle("Table Window");
+public class Background {
+	private String href;
+
+	public String getHref() {
+		return href;
 	}
-	
-	public void close() {
-		user.destroy(this);
+
+	public void setHref(String href) {
+		this.href = href;
 	}
-	
-	public ExampleTable getBody() {
-		ExampleTable table = new ExampleTable();
-		user.register(table);
-		return table;
-	}
-	
-	
 }

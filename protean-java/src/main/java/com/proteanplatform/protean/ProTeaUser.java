@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.proteanplatform.protea;
+package com.proteanplatform.protean;
 
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.proteanplatform.protea.element.AbstractElement;
-import com.proteanplatform.protea.element.Background;
+import com.proteanplatform.protean.element.AbstractElement;
+import com.proteanplatform.protean.element.Background;
 import com.proteanplatform.websocket.WebSocketUser;
 
 /**

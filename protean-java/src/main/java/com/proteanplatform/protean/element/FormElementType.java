@@ -13,36 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.proteanplatform.protea.element;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+package com.proteanplatform.protean.element;
 
 /**
  * @author Austin Miller
  *
  */
-public abstract class Window<T> extends AbstractElement<T> {
+public enum FormElementType {
 
-	@JsonIgnore
-	public final String getCommand() {
-		return "Window";
-	}
-	
-	private boolean resizable = true;
-	
-	private String title = "Window Title";
-	
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public boolean isResizable() {
-		return resizable;
-	}
-	public void setResizable(boolean resizable) {
-		this.resizable = resizable;
-	}
-	
+	date,
+	numeric,
+	string, 
+	text, bool, integer, enumeration, select
+	;
 }

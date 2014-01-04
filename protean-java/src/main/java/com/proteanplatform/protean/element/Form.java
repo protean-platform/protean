@@ -13,20 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.proteanplatform.protea.element;
+package com.proteanplatform.protean.element;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Austin Miller
- *
  */
-public class Background {
-	private String href;
+public abstract class Form<T> extends AbstractElement<T>{
 
-	public String getHref() {
-		return href;
+	/* (non-Javadoc)
+	 * @see org.codefrags.protea.element.AbstractElement#getCommand()
+	 */
+	@Override
+	public String getCommand() {
+		return "Form";
 	}
 
-	public void setHref(String href) {
-		this.href = href;
+	public List<FormElement> getElements() {
+		return elements;
 	}
+
+	public void setElements(List<FormElement> elements) {
+		this.elements = elements;
+	}
+
+	private List<FormElement> elements = new ArrayList<FormElement>();
+
 }

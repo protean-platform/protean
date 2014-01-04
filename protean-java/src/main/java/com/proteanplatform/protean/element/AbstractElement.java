@@ -13,17 +13,44 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.proteanplatform.protea.element;
+package com.proteanplatform.protean.element;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.proteanplatform.protean.ElementMetadata;
 
 /**
  * @author Austin Miller
  *
  */
-public enum FormElementType {
+public abstract class AbstractElement<T> {
+	
+	
 
-	date,
-	numeric,
-	string, 
-	text, bool, integer, enumeration, select
-	;
+	public abstract String getCommand();
+	private long id = Long.MIN_VALUE;
+	
+	protected T user;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	@JsonIgnore
+	public T getUser() {
+		return user;
+	}
+
+	@SuppressWarnings("unchecked")
+	public void setUser(Object user) {
+		this.user = (T) user;
+	}
+
+	public ElementMetadata getMetadata() throws Exception {
+		return ElementMetadata.getMetadata(this.getClass());
+	}
+	
 }

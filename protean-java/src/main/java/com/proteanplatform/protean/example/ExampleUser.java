@@ -13,27 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.proteanplatform.protea.element;
+package com.proteanplatform.protean.example;
+
+import com.proteanplatform.protean.ProTeaUser;
 
 /**
  * @author Austin Miller
  *
  */
-public class Validator {
-	private String regex;
-	private String error;
-	
-	public String getRegex() {
-		return regex;
-	}
-	public void setRegex(String regex) {
-		this.regex = regex;
-	}
-	public String getError() {
-		return error;
-	}
-	public void setError(String error) {
-		this.error = error;
-	}
+public class ExampleUser extends ProTeaUser {
 
 }

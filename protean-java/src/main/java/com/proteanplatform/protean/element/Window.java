@@ -13,44 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.proteanplatform.protea.element;
+package com.proteanplatform.protean.element;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.proteanplatform.protea.ElementMetadata;
 
 /**
  * @author Austin Miller
  *
  */
-public abstract class AbstractElement<T> {
-	
-	
-
-	public abstract String getCommand();
-	private long id = Long.MIN_VALUE;
-	
-	protected T user;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
+public abstract class Window<T> extends AbstractElement<T> {
 
 	@JsonIgnore
-	public T getUser() {
-		return user;
+	public final String getCommand() {
+		return "Window";
 	}
-
-	@SuppressWarnings("unchecked")
-	public void setUser(Object user) {
-		this.user = (T) user;
+	
+	private boolean resizable = true;
+	
+	private String title = "Window Title";
+	
+	public String getTitle() {
+		return title;
 	}
-
-	public ElementMetadata getMetadata() throws Exception {
-		return ElementMetadata.getMetadata(this.getClass());
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public boolean isResizable() {
+		return resizable;
+	}
+	public void setResizable(boolean resizable) {
+		this.resizable = resizable;
 	}
 	
 }

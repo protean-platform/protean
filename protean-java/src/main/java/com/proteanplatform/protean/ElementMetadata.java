@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.proteanplatform.protea;
+package com.proteanplatform.protean;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -23,8 +23,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import com.proteanplatform.protea.element.AbstractElement;
-import com.proteanplatform.protea.element.Window;
+import com.proteanplatform.protean.element.AbstractElement;
+import com.proteanplatform.protean.element.Window;
 
 /**
  * @author Austin Miller
