@@ -8,6 +8,7 @@
 	<modules>
 		<module>websocket</module>
 		<module>protean-js</module>
+		<module>protean-java</module>
 	</modules>
 
 
