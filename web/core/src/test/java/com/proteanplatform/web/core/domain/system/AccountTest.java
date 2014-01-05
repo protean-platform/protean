@@ -1,4 +1,4 @@
-package com.proteanplatform.web.core.domain;
+package com.proteanplatform.web.core.domain.system;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,15 +8,15 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.proteanplatform.web.core.config.CoreConfig;
-import com.proteanplatform.web.core.domain.system.Client;
-import com.proteanplatform.web.core.domain.system.ClientDao;
+import com.proteanplatform.web.core.domain.system.Account;
+import com.proteanplatform.web.core.domain.system.AccountDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CoreConfig.class)
-public class ClientTest {
+public class AccountTest {
 
 	@Autowired
-	ClientDao clientDao;
+	AccountDao accountDao;
 	
 	@Autowired
 	PasswordEncoder passwordEncoder;
@@ -24,18 +24,18 @@ public class ClientTest {
 //	@Test
 	public void test() {
 	
-		Client client = new Client();
+		Account client = new Account();
 		client.setEmail("test");
 		client.setPassword(passwordEncoder.encode("test"));
 
-		clientDao.save(client);
+		accountDao.save(client);
 	}
 	
 	@Test
 	public void update() {
-		Client client = clientDao.findByEmail("test");
+		Account client = accountDao.findByEmail("test");
 		client.setExternalId("test");
-		clientDao.save(client);
+		accountDao.save(client);
 	}
 
 }

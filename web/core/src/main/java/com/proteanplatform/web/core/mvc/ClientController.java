@@ -6,13 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.proteanplatform.web.core.domain.system.ClientDao;
+import com.proteanplatform.web.core.domain.system.AccountDao;
 
 @Controller
 public class ClientController {
 
 	@Autowired
-	ClientDao clientDao;
+	AccountDao clientDao;
 	
 	@RequestMapping("/client")
 	@PreAuthorize("hasRole('ROLE_USER')")
