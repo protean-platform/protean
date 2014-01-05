@@ -106,7 +106,7 @@ public class ElementMetadata {
 		return methods.keySet();
 	}
 	
-	public void invoke(AbstractElement<?> element,Map<String, Object> methodMap) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public void invoke(AbstractElement element,Map<String, Object> methodMap) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		String methodName = (String) methodMap.get("name"); 
 		@SuppressWarnings("unchecked")
 		Map<String,Object> args = (Map<String, Object>) methodMap.get("args");

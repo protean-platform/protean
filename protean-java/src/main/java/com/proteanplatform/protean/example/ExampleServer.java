@@ -19,54 +19,41 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.proteanplatform.protean.ProTeaServer;
+import com.proteanplatform.protean.ProteanSubscriber;
+import com.proteanplatform.protean.ProteanServer;
+import com.proteanplatform.protean.ProteanUser;
 
 /**
  * @author Austin Miller
  *
  */
-public class ExampleServer extends ProTeaServer<ExampleUser> {
-
-	
-	/* (non-Javadoc)
-	 * @see org.codefrags.protea.ProTeaServer#setProTeaUserClass()
-	 */
-	@Override
-	protected Class<ExampleUser> setProTeaUserClass() {
-		return ExampleUser.class;
-	}
-	
+public class ExampleServer implements ProteanSubscriber {
 
 	public static void main(String [] args) throws JsonParseException, JsonMappingException, IOException {
 		
-		ExampleServer edl = new ExampleServer();
-		edl.run();
+		ProteanServer server = new ProteanServer();
+		server.setPort(8090);
+		server.subscribe(new ExampleServer());
+		server.run();
 	}
 
 	/* (non-Javadoc)
-	 * @see org.codefrags.protea.ProTeaServer#onNewUser(org.codefrags.protea.ProTeaUser)
+	 * @see com.proteanplatform.protean.ProteanListener#onNewUser(com.proteanplatform.protean.ProteanUser)
 	 */
 	@Override
-	protected void onNewUser(ExampleUser user) {
+	public void onNewUser(ProteanUser user) {
 		ExampleTableWindow etw = new ExampleTableWindow();
 		user.sendServerTime();
 		user.load(etw);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.codefrags.protea.ProTeaServer#onCloseConnection(org.codefrags.protea.ProTeaUser)
-	 */
-	@Override
-	protected void onCloseConnection(ExampleUser user) {
-		
-	}
 
 	/* (non-Javadoc)
-	 * @see org.codefrags.protea.ProTeaServer#setPort()
+	 * @see com.proteanplatform.protean.ProteanListener#onCloseConnection(com.proteanplatform.protean.ProteanUser)
 	 */
 	@Override
-	protected int setPort() {
-		return 8090;
+	public void onCloseConnection(ProteanUser user) {
+		
 	}
 
 }

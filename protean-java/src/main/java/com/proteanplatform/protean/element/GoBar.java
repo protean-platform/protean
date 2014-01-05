@@ -17,7 +17,6 @@ package com.proteanplatform.protean.element;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * This is the autocomplete bar on the menu, which attempts to map strings to loadable
@@ -25,21 +24,19 @@ import java.util.Map;
  * 
  * @author Austin Miller
  */
-public abstract class GoBar<T> extends AbstractElement<T> {
+public class GoBar extends AbstractElement {
 
 	public String getCommand() {
 		return "GoBar";
 	}
 	
-	private List<String> commands = new ArrayList<String>();
-
-	public List<String> getCommands() {
+	public List<GoCommand> getCommands() {
 		return commands;
 	}
 
-	public void setCommands(List<String> commands) {
+	public void setCommands(List<GoCommand> commands) {
 		this.commands = commands;
 	}
-	
-	public abstract void go(Map<String,Object> args);
+
+	private List<GoCommand> commands = new ArrayList<>();
 }

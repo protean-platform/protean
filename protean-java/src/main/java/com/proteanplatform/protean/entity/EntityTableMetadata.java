@@ -17,11 +17,12 @@ package com.proteanplatform.protean.entity;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.nio.CharBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -31,6 +32,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.proteanplatform.protean.Protean;
+import com.proteanplatform.protean.ProteanServer;
 import com.proteanplatform.protean.ProteanValidator;
 import com.proteanplatform.protean.element.FormElement;
 import com.proteanplatform.protean.element.FormElementType;
@@ -43,12 +45,24 @@ import com.proteanplatform.protean.element.FormElementType;
  */
 public class EntityTableMetadata {
 	private static Logger logger = LoggerFactory.getLogger(EntityTableMetadata.class);
-	private static CharBuffer buffer = CharBuffer.allocate(1<<8);
+	
+	private static Map<EntityType<?>,EntityTableMetadata> entityMetadata= new HashMap<EntityType<?>,EntityTableMetadata>();
+
+	public static EntityTableMetadata getMetadata(EntityType<?> entity) {
+		
+		if(entityMetadata.containsKey(entity) == false) {
+			entityMetadata.put(entity, new EntityTableMetadata(entity));
+		}
+		
+		return entityMetadata.get(entity);
+	}
 	
 	private List<EntityTableCellMetadata> cells = new ArrayList<EntityTableCellMetadata>();
 	private List<FormElement> elements = new ArrayList<FormElement>();
 	private List<String> visibleColumns = new ArrayList<String>();
 	private EntityType<?> entity;
+	
+	
 	
 	/**
 	 * @param entity
@@ -111,9 +125,9 @@ public class EntityTableMetadata {
 			FormElement el = new FormElement();
 			
 			if(cAdmin != null) {
-				el.setLabel(cAdmin.label().length() == 0 ? format(column) : cAdmin.label());
+				el.setLabel(cAdmin.label().length() == 0 ? ProteanServer.camelCaseToSentence(column) : cAdmin.label());
 			} else {
-				el.setLabel(format(column));
+				el.setLabel(ProteanServer.camelCaseToSentence(column));
 			}
 			
 			if(field.getType() == String.class) {
@@ -190,53 +204,6 @@ public class EntityTableMetadata {
 		}
 	}
 	
-	/**
-	 * <p>Converts camelcase and underscores to a string with spaces with some
-	 * intelligence.</p>
-	 * @param column
-	 * @return
-	 */
-	private String format(String in) {
-		buffer.clear();
-		
-		boolean last = false; // was last a capital?
-		boolean lastu = false; // was last a capital?
-		
-		char ch;
-		char next = in.charAt(0);
-		
-		for(int i = 1;i<in.length();++i) {
-			
-			ch = next;
-			next = in.charAt(i);
-			
-			if((Character.isUpperCase(ch) && last == false) ||
-					(Character.isUpperCase(ch) && last == true && 
-					Character.isUpperCase(next) == false && next != '_')) {
-				
-				buffer.append(" ");
-			}
-			
-			
-			if(ch == '_') {
-				buffer.append(" ");
-			} else if(lastu) {
-				buffer.append(Character.toUpperCase(ch));
-			} else {
-				buffer.append(ch);
-			}
-			
-			last = Character.isUpperCase(ch) ? true : false;
-			lastu = ch == '_' ? true : false;
-		}
-		
-		buffer.append(next);
-		
-		buffer.put(0, Character.toUpperCase(buffer.get(0)));
-		buffer.flip();
-		
-		return buffer.toString();
-	}
 
 	public List<EntityTableCellMetadata> getCells() {
 		return cells;

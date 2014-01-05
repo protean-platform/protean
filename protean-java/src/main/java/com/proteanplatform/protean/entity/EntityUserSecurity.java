@@ -15,22 +15,26 @@
  */
 package com.proteanplatform.protean.entity;
 
-import com.proteanplatform.protean.element.Form;
+import javax.persistence.metamodel.EntityType;
 
+import com.proteanplatform.protean.ProteanUser;
 
 /**
  * @author Austin Miller
  *
  */
-public class EntityForm extends Form<EntityUser> {
+public class EntityUserSecurity {
 
-	/**
-	 * @param entity
-	 */
-	public EntityForm() {
-		// TODO Auto-generated constructor stub
+	public boolean hasAccess(ProteanUser user, EntityType<?> entity) {
+		return true;
 	}
 	
+	public String getQuery(ProteanUser user, EntityType<?> entity) {
+		return "SELECT e FROM "+entity.getName() + " e";
+	}
 	
+	public void go(String string) {
+		
+	}
 
 }

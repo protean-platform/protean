@@ -19,17 +19,18 @@ import java.util.Map;
 
 import javax.persistence.metamodel.EntityType;
 
+import com.proteanplatform.protean.element.Table;
 import com.proteanplatform.protean.element.Window;
 
 /**
  * @author Austin Miller
  *
  */
-public class EntityTableWindow extends Window<EntityUser> {
+public class EntityTableWindow extends Window {
 
 	private EntityType<?> entity;
 
-	EntityTable table;
+	Table table;
 	
 	/**
 	 * @param entity
@@ -39,8 +40,8 @@ public class EntityTableWindow extends Window<EntityUser> {
 		setTitle(entity.getName());
 	}
 	
-	public EntityTable getBody() {
-		table = EntityServer.getInstance().constructEntityTable(entity);
+	public Table getBody() {
+		table = user.constructEntityTable(entity);
 		user.register(table);
 		return table;
 	}

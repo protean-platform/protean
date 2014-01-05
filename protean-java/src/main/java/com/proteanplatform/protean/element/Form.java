@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * @author Austin Miller
  */
-public abstract class Form<T> extends AbstractElement<T>{
+public class Form extends AbstractElement {
 
 	/* (non-Javadoc)
 	 * @see org.codefrags.protea.element.AbstractElement#getCommand()

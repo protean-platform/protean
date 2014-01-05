@@ -13,29 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.proteanplatform.protean.entity;
+package com.proteanplatform.protean.element;
 
-import javax.persistence.metamodel.EntityType;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.proteanplatform.protean.element.Table;
-
-public class EntityTable extends Table<EntityUser>{
-	
-	@JsonIgnore
-	private EntityType<?> entity;
-
-	public void refresh() {
-		System.out.println(getEntity());
+/**
+ * @author Austin Miller
+ *
+ */
+public class GoCommand {
+	private String label;
+	private String value;
+	public String getLabel() {
+		return label;
 	}
-
-	public EntityType<?> getEntity() {
-		return entity;
+	public void setLabel(String label) {
+		this.label = label;
 	}
-
-	public void setEntity(EntityType<?> entity) {
-		this.entity = entity;
+	public String getValue() {
+		return value;
 	}
-
-
+	public void setValue(String value) {
+		this.value = value;
+	}
 }

@@ -21,7 +21,7 @@ import com.proteanplatform.protean.element.Window;
  * @author Austin Miller
  *
  */
-public class ExampleTableWindow extends Window<ExampleUser> {
+public class ExampleTableWindow extends Window {
 	
 	public ExampleTableWindow() {
 		setTitle("Table Window");

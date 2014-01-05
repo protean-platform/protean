@@ -25,7 +25,7 @@ import com.proteanplatform.protean.element.TableColumn.Sorting;
  * @author Austin Miller
  *
  */
-public class ExampleTable extends Table<ExampleUser> {
+public class ExampleTable extends Table {
 	public ExampleTable() {
 		super();
 		

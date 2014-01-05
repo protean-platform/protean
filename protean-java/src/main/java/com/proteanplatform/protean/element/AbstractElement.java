@@ -17,19 +17,20 @@ package com.proteanplatform.protean.element;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.proteanplatform.protean.ElementMetadata;
+import com.proteanplatform.protean.ProteanUser;
 
 /**
  * @author Austin Miller
  *
  */
-public abstract class AbstractElement<T> {
+public abstract class AbstractElement {
 	
 	
 
 	public abstract String getCommand();
 	private long id = Long.MIN_VALUE;
 	
-	protected T user;
+	protected ProteanUser user;
 
 	public long getId() {
 		return id;
@@ -40,13 +41,12 @@ public abstract class AbstractElement<T> {
 	}
 
 	@JsonIgnore
-	public T getUser() {
+	public ProteanUser getUser() {
 		return user;
 	}
 
-	@SuppressWarnings("unchecked")
-	public void setUser(Object user) {
-		this.user = (T) user;
+	public void setUser(ProteanUser user) {
+		this.user = user;
 	}
 
 	public ElementMetadata getMetadata() throws Exception {

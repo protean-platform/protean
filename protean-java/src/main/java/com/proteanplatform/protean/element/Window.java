@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @author Austin Miller
  *
  */
-public abstract class Window<T> extends AbstractElement<T> {
+public class Window extends AbstractElement {
 
 	@JsonIgnore
 	public final String getCommand() {

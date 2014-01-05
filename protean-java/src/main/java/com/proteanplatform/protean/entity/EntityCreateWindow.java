@@ -17,6 +17,7 @@ package com.proteanplatform.protean.entity;
 
 import javax.persistence.metamodel.EntityType;
 
+import com.proteanplatform.protean.element.Form;
 import com.proteanplatform.protean.element.Window;
 
 
@@ -24,10 +25,10 @@ import com.proteanplatform.protean.element.Window;
  * @author Austin Miller
  *
  */
-public class EntityCreateWindow extends Window<EntityUser> {
+public class EntityCreateWindow extends Window {
 
 	private EntityType<?> entity;
-	private EntityForm form;
+	private Form form;
 
 	/**
 	 * @param entity
@@ -41,7 +42,7 @@ public class EntityCreateWindow extends Window<EntityUser> {
 
 	public Object getBody() {
 		if(form == null){
-			form = EntityServer.getInstance().constructCreateEntityForm(entity);
+			form = user.constructCreateEntityForm(entity);
 			user.register(form);
 		}
 		return form;

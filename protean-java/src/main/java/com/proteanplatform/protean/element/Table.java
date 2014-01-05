@@ -29,7 +29,7 @@ import com.proteanplatform.protean.element.TableColumn.Sorting;
  * @author Austin Miller
  *
  */
-public abstract class Table<T> extends AbstractElement<T> {
+public class Table extends AbstractElement {
 
 	@Override
 	public final String getCommand() {

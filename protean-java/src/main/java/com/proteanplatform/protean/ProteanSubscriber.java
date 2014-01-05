@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.proteanplatform.protean.example;
-
-import com.proteanplatform.protean.ProTeaUser;
+package com.proteanplatform.protean;
 
 /**
  * @author Austin Miller
  *
  */
-public class ExampleUser extends ProTeaUser {
-
+public interface ProteanSubscriber {
+	
+	public void onNewUser(ProteanUser user);
+	public void onCloseConnection(ProteanUser user);
 }
